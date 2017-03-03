@@ -29,9 +29,6 @@ class AppConfigurator{
                 $this->configFromParams(func_get_arg(0), func_get_arg(1));
             break;
         }
-
-        var_dump($this);
-
     }
 
     /**
@@ -60,9 +57,6 @@ class AppConfigurator{
         // json állományól jönnek a konfiguráció adatok
 
         $path = "config".DIRECTORY_SEPARATOR.$jsonFile;
-
-        print $path."<br>";
-
         $jsonString = @file_get_contents($path);
 
         if($jsonString === false){
@@ -77,7 +71,4 @@ class AppConfigurator{
     }
 
 }
-
-
-
 ?>

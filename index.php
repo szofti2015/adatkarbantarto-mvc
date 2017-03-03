@@ -2,28 +2,29 @@
 
 require "config/GlobalConfig.php";
 require "controller/AppConfigurator.php";
+require "controller/RequestHelper.php";
+require "controller/ControllerFactory.php";
+require "utils/Utils.php";
 
 use config\GlobalConfig as Config;
 use controller\AppConfigurator as AppConfigurator;
+use controller\RequestHelper as RequestHelper;
+use controller\ControllerFactory as ControllerFactory;
+use utils\Utils as Utils;
 
 try {
+    $helper = new RequestHelper(new AppConfigurator('indulo', 'start'));
 
+    // gyártó tervezési minta
+    $factory = new ControllerFactory($helper);
 
-    /*
-        adatkarbantarto-mvc/index.php?controller=bor&action=edit&id=x
-    */
+    $controller = $factory->produceController();
 
+    var_dump($controller);
 
-    /*
-        BorController include + init
-    */
+    //$controller->handleRequest();   // model ->
 
-    /*
-        BorController::editAction(id) */
-
-    new AppConfigurator('config.json');
-//    new RequestHelper(new AppConfigurator());
-
+    //$controller->resolveView();     // view
 
 } catch (Exception $ex) {
     print "<div style='color:red'>";
