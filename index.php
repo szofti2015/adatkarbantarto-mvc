@@ -10,24 +10,29 @@ try {
 
 
     /*
-adatkarbantarto-mvc/index.php?controller=bor&action=edit&id=x
+        adatkarbantarto-mvc/index.php?controller=bor&action=edit&id=x
     */
 
 
-    /* BorController include + init
+    /*
+        BorController include + init
     */
 
     /*
         BorController::editAction(id) */
 
-    new AppConfigurator("index", "index");
+    new AppConfigurator('config.json');
 //    new RequestHelper(new AppConfigurator());
 
 
 } catch (Exception $ex) {
-    print "<pre>";
-    print_r($ex);
-    print "</pre>";
+    print "<div style='color:red'>";
+    print $ex->getMessage();
+    print "</div>";
+
+    print "<table border='1' cellspacing='0' cellpadding='1'>";
+    print $ex->xdebug_message;
+    print "</table>";
 }
 
 ?>

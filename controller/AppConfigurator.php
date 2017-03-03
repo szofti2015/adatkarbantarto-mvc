@@ -2,8 +2,11 @@
 
 namespace controller;   // saját névtére
 
+require 'errorhandling\ConfigJsonNotFoundException.php';
+
 // másik névtérre való hivatkozás
 use config\GlobalConfig as GlobalConfig;
+use errorhandling\ConfigJsonNotFoundException as ConfigJsonNotFoundException;
 
 /*
 * Osztály az alkalmazás konfigjához
@@ -15,29 +18,62 @@ class AppConfigurator{
 
     public function __construct(){
 
-        if (func_num_args() == 0){
-            $this->defaultControllerName =
-                GlobalConfig::DEFAULT_CONTROLLER_NAME;
-
-            $this->defaultActionName =
-                GlobalConfig::DEFAULT_ACTION_NAME;
-
-        } else if(func_num_args() == 1) {
-            // json állományól jönnek a konfiguráció adatok
-            echo func_get_arg(0);
-        } else if (func_num_args() == 2){
-            $this->defaultControllerName =
-                func_get_arg(0);
-
-            $this->defaultActionName =
-                func_get_arg(1);
+        switch(func_num_args()){
+            case 0:
+                $this->configFromParams();
+            break;
+            case 1:
+                $this->configFromJson(func_get_arg(0));
+            break;
+            case 2:
+                $this->configFromParams(func_get_arg(0), func_get_arg(1));
+            break;
         }
 
-        print $this->defaultControllerName;
-        print "<br>";
-        print $this->defaultActionName;
+        var_dump($this);
 
+    }
 
+    /**
+     * Visszadja az alapértelmezett kontroller nevét
+     * @return [[Type]] [[Description]]
+     */
+    public function getDefaultControllerName(){
+        return $this->defaultControllerName;
+    }
+
+    /**
+     * Visszadja az alapértelmezett parancs nevét
+     */
+    public function getDefaultActionName(){
+        return $this->defaultActionName;
+    }
+
+    private function configFromParams($defController = GlobalConfig::DEFAULT_CONTROLLER_NAME,                                       $defAction = GlobalConfig::DEFAULT_ACTION_NAME){
+
+        $this->defaultControllerName = $defController;
+        $this->defaultActionName = $defAction;
+
+    }
+
+    private function configFromJson($jsonFile){
+        // json állományól jönnek a konfiguráció adatok
+
+        $path = "config".DIRECTORY_SEPARATOR.$jsonFile;
+
+        print $path."<br>";
+
+        $jsonString = @file_get_contents($path);
+
+        if($jsonString === false){
+            throw new ConfigJsonNotFoundException("A json file-t nem sikeredett megnyitni!!!");
+        }
+
+        // json felépítésű a fájl???
+        $jsonObj = json_decode($jsonString);
+
+        $this->configFromParams($jsonObj->defaultControllerName,
+                                $jsonObj->defaultActionName);
     }
 
 }
