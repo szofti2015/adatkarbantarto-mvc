@@ -1,6 +1,8 @@
 <?php
 
-class HelloController {
+use controller\Controller as Controller;
+
+class HelloController extends Controller{
 
 }
 ?>

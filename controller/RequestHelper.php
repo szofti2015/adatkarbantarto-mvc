@@ -70,8 +70,14 @@ class RequestHelper {
         //        $this->getRequestParam('controller') :
         //        $this->configurator->getDefaultControllerName();
     }
-
-
+    
+    /**
+     * A controller osztály nevének a végét adja vissza
+     * @return [[Type]] [[Description]]
+     */
+    public function getControllerPostFixName(){
+        return $this->configurator->getControllerPostFixName();
+    }
 }
 
 

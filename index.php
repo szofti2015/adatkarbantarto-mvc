@@ -4,12 +4,14 @@ require "config/GlobalConfig.php";
 require "controller/AppConfigurator.php";
 require "controller/RequestHelper.php";
 require "controller/ControllerFactory.php";
+require "controller/Controller.php";
 require "utils/Utils.php";
 
 use config\GlobalConfig as Config;
 use controller\AppConfigurator as AppConfigurator;
 use controller\RequestHelper as RequestHelper;
 use controller\ControllerFactory as ControllerFactory;
+use controller\Controller as Controller;
 use utils\Utils as Utils;
 
 try {
@@ -17,14 +19,16 @@ try {
 
     // gyártó tervezési minta
     $factory = new ControllerFactory($helper);
-
+    
     $controller = $factory->produceController();
 
-    var_dump($controller);
+    //var_dump($controller);
 
-    //$controller->handleRequest();   // model ->
 
-    //$controller->resolveView();     // view
+    $controller->handleRequest();   // model ->
+
+
+    $controller->resolveView();     // view
 
 } catch (Exception $ex) {
     print "<div style='color:red'>";
