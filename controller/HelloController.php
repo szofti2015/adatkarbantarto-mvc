@@ -1,6 +1,6 @@
 <?php
 
-use controller\Controller as Controller;
+namespace controller;
 
 class HelloController extends Controller{
 

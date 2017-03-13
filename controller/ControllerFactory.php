@@ -20,6 +20,7 @@ use errorhandling\ControllerFileNotFoundException as ControllerFileNotFoundExcep
 */
 class ControllerFactory {
 
+    const NAMESPACE_SEPARATOR = '\\';
     private $helper;
 
     public function __construct(RequestHelper $helper){
@@ -44,8 +45,11 @@ class ControllerFactory {
 
         require $controllerFilePath;
         
-        // egy szring alapján példányosítunk
-        $controllerObj = new $controllerName($this->helper); 
+        // névtér és osztály neve
+        $controllerNameWithNamespace = __NAMESPACE__.self::NAMESPACE_SEPARATOR .$controllerName;
+
+        // a sztring alapján példányosítunk
+        $controllerObj = new $controllerNameWithNamespace($this->helper);
         
         if(!($controllerObj instanceof Controller)) {
             throw new NCCIE($controllerName.'Nem Controller osztálypéldány!');
