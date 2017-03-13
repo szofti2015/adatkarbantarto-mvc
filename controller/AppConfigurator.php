@@ -46,6 +46,10 @@ class AppConfigurator{
         return $this->defaultActionName;
     }
 
+    public function getControllerPostFixName(){
+        return GlobalConfig::CONTROLLER_CLASS_POSTFIX;
+    }
+
     private function configFromParams($defController = GlobalConfig::DEFAULT_CONTROLLER_NAME,                                       $defAction = GlobalConfig::DEFAULT_ACTION_NAME){
 
         $this->defaultControllerName = $defController;

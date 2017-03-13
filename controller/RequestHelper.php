@@ -22,6 +22,11 @@ class RequestHelper {
         $this->sessionParams = $_SESSION;
     }
 
+    /**
+     * GET és POST tömbökből kérdez le kulcs alapján értékeket
+     * @param varible $key GET v. POST tömb kulcsa
+     * @return varible a kulcshoz tartozó
+     */
     public function getRequestParam($key){
         if(isset($this->requestParams[$key]))
             return $this->requestParams[$key];
@@ -29,6 +34,10 @@ class RequestHelper {
         return null;
     }
 
+    /**
+     * Minden paramétert visszaad
+     * @return variable
+     */
     public function getAllParams(){
         return $this->requestParams;
     }
@@ -41,9 +50,17 @@ class RequestHelper {
         return $this->sessionParams;
     }
 
+    /**
+     * Visszaadja a kontroller nevét
+     * @return [[Type]] [[Description]]
+     */
     public function getControllerName(){
-        if($this->getRequestParam('controller') != null){
-            return $this->getRequestParam('controller');
+        if($this->getRequestParam($this->configurator->
+                                    getControllerPostFixName())
+           != null)
+        {
+            return $this->getRequestParam($this->configurator->
+                                    getControllerPostFixName());
         }
 
         return $this->configurator->getDefaultControllerName();
