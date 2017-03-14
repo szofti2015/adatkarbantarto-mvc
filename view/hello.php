@@ -6,6 +6,7 @@ include "page/header.php";
 
     <h1>Helló MVC</h1>
 
+<?=$helloMessage?>
 </main>
 
 <?php

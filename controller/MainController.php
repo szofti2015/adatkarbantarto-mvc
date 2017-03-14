@@ -21,9 +21,7 @@ class MainController extends Controller{
         $helloMessage = "Üdvözöllek MCV alkalmazásomban!";
 
         $this->viewResult = "hello";
-
     }
-
 }
 
 ?>
