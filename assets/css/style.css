@@ -1,4 +1,10 @@
+body {
+    margin: 0;
+    padding: 0;
+}
+
 h1 {
     font-size: xx-large;
     text-align: center;
+    -webkit-margin-before: 0;
 }

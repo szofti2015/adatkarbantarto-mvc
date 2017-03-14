@@ -5,6 +5,7 @@ require "controller/AppConfigurator.php";
 require "controller/RequestHelper.php";
 require "controller/ControllerFactory.php";
 require "controller/Controller.php";
+require "controller/DataObject.php";
 require "utils/Utils.php";
 
 use config\GlobalConfig as Config;
@@ -12,6 +13,7 @@ use controller\AppConfigurator as AppConfigurator;
 use controller\RequestHelper as RequestHelper;
 use controller\ControllerFactory as ControllerFactory;
 use controller\Controller as Controller;
+use controller\DataObject as DataObject;
 use utils\Utils as Utils;
 
 try {

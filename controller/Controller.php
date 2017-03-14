@@ -10,6 +10,8 @@ use config\GlobalConfig as Config;
 use errorhandling\ActionMethodNotFoundException as ActionMethodNotFoundException;
 use errorhandling\ViewFileNotFoundException as ViewFileNotFoundException;
 
+use controller\DataObject as DataObject;
+
 /**
 * Absztakt osztály a controllerek kezeléséhez
 */
@@ -49,6 +51,9 @@ abstract class Controller {
      * Megjeleníti a kérés után a nézet állományt
      */
     public function resolveView(){
+
+        // TODO: redirect, forward??
+
         // "view/hello.php"
         $viewPath = $this->helper->getViewDir().DIRECTORY_SEPARATOR.$this->viewResult.Config::PHP_EXT;
 

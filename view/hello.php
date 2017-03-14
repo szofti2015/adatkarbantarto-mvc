@@ -1,12 +1,11 @@
 <?php
 include "page/header.php";
 ?>
-
 <main>
 
     <h1>Helló MVC</h1>
 
-<?=$helloMessage?>
+    <?=$dataObj->getProp('helloMsg');?>
 </main>
 
 <?php

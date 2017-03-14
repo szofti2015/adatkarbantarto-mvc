@@ -20,6 +20,10 @@ class MainController extends Controller{
     public function mainAction(){
         $helloMessage = "Üdvözöllek MCV alkalmazásomban!";
 
+        $dataObj = DataObject::getInstance();
+        $dataObj->addProp('helloMsg', $helloMessage)
+            ->addProp('title', 'Helló MVC');
+
         $this->viewResult = "hello";
     }
 }
