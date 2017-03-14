@@ -55,20 +55,12 @@ class RequestHelper {
      * @return [[Type]] [[Description]]
      */
     public function getControllerName(){
-        if($this->getRequestParam($this->configurator->
-                                    getControllerPostFixName())
-           != null)
+        if($this->getRequestParam($this->configurator->getControllerPostFixName()) != null)
         {
-            return $this->getRequestParam($this->configurator->
-                                    getControllerPostFixName());
+            return $this->getRequestParam($this->configurator->getControllerPostFixName());
         }
 
         return $this->configurator->getDefaultControllerName();
-
-
-        // return (isset($this->getRequestParam('controller')) ?
-        //        $this->getRequestParam('controller') :
-        //        $this->configurator->getDefaultControllerName();
     }
     
     /**
@@ -77,6 +69,31 @@ class RequestHelper {
      */
     public function getControllerPostFixName(){
         return $this->configurator->getControllerPostFixName();
+    }
+
+    /**
+     * Az action nevét adja vissza, ha nincs ilyen paraméter
+     * akkor a GlobalConfig-ból veszi ki
+     * @return [[Type]] [[Description]]
+     */
+    public function getActionName(){
+        if($this->getRequestParam($this->configurator->getActionParamName()) != null){
+            return $this->getRequestParam($this->configurator->getActionParamName());
+        }
+
+        return $this->configurator->getDefaultActionName();
+    }
+
+    /**
+     * Az action metódusok utótagát kérdezi le
+     * @return [[Type]] [[Description]]
+     */
+    public function getActionMethodPostfix(){
+        return $this->configurator->getActionMethodPostfix();
+    }
+
+    public function getViewDir(){
+        return $this->configurator->getViewDir();
     }
 }
 

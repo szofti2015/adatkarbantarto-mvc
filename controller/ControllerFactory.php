@@ -32,7 +32,6 @@ class ControllerFactory {
         $controllerName = Utils::toPascalCase($this->helper->getControllerName().
                         Utils::toPascalCase($this->helper->getControllerPostFixName()));
 
-
         $controllerFilePath = Config::CONTROLLER_DIR.
                 DIRECTORY_SEPARATOR.$controllerName.
                 Config::PHP_EXT;
@@ -45,7 +44,7 @@ class ControllerFactory {
 
         require $controllerFilePath;
         
-        // névtér és osztály neve
+        // névtér és osztály neve pl. controller\InduloController
         $controllerNameWithNamespace = __NAMESPACE__.self::NAMESPACE_SEPARATOR .$controllerName;
 
         // a sztring alapján példányosítunk

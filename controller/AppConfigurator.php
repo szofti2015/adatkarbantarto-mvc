@@ -46,10 +46,19 @@ class AppConfigurator{
         return $this->defaultActionName;
     }
 
+    /**
+     * [[Description]]
+     * @return [[Type]] [[Description]]
+     */
     public function getControllerPostFixName(){
         return GlobalConfig::CONTROLLER_CLASS_POSTFIX;
     }
 
+    /**
+     * a construktor paramétereiből olvassa ki a konf adatotak
+     * @param string $defController kontroller neve
+     * @param string $defAction action neve
+     */
     private function configFromParams($defController = GlobalConfig::DEFAULT_CONTROLLER_NAME,                                       $defAction = GlobalConfig::DEFAULT_ACTION_NAME){
 
         $this->defaultControllerName = $defController;
@@ -57,10 +66,14 @@ class AppConfigurator{
 
     }
 
+    /**
+     * json-ből olvassa ki az adatokat
+     * @param [[Type]] $jsonFile [[Description]]
+     */
     private function configFromJson($jsonFile){
         // json állományól jönnek a konfiguráció adatok
 
-        $path = "config".DIRECTORY_SEPARATOR.$jsonFile;
+        $path = GlobalConfig::CONFIG_DIR.DIRECTORY_SEPARATOR.$jsonFile;
         $jsonString = @file_get_contents($path);
 
         if($jsonString === false){
@@ -72,6 +85,22 @@ class AppConfigurator{
 
         $this->configFromParams($jsonObj->defaultControllerName,
                                 $jsonObj->defaultActionName);
+    }
+
+    /**
+     * [[Description]]
+     * @return [[Type]] [[Description]]
+     */
+    public function getActionParamName(){
+        return GlobalConfig::ACTION_PARAM_NAME;
+    }
+
+    public function getActionMethodPostfix(){
+        return GlobalConfig::ACTION_METHOD_POSTFIX;
+    }
+
+    public function getViewDir(){
+        return GlobalConfig::VIEW_DIR;
     }
 
 }

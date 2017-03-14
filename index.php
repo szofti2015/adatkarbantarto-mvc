@@ -15,7 +15,7 @@ use controller\Controller as Controller;
 use utils\Utils as Utils;
 
 try {
-    $helper = new RequestHelper(new AppConfigurator('indulo', 'start'));
+    $helper = new RequestHelper(new AppConfigurator());
 
     // gyártó tervezési minta
     $factory = new ControllerFactory($helper);
