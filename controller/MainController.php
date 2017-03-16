@@ -2,7 +2,7 @@
 
 namespace controller;
 
-class MainController extends Controller{
+class MainController extends Controller {
 
     public function listAction() {
 
@@ -18,13 +18,13 @@ class MainController extends Controller{
     }
 
     public function mainAction(){
-        $helloMessage = "Üdvözöllek MCV alkalmazásomban!";
 
+        $this->viewResult = "main";
+    }
+
+    public function createTitle(){
         $dataObj = DataObject::getInstance();
-        $dataObj->addProp('helloMsg', $helloMessage)
-            ->addProp('title', 'Helló MVC');
-
-        $this->viewResult = "hello";
+        $dataObj->addProp('title', "Főoldal");
     }
 }
 

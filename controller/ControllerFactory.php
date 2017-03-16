@@ -4,10 +4,12 @@ namespace controller;
 
 require 'errorhandling\NotControllerClassInstanceException.php';
 require 'errorhandling\ControllerFileNotFoundException.php';
+require 'errorhandling\ClassNotFoundException.php';
 
 
 use utils\Utils as Utils;
 use config\GlobalConfig as Config;
+use errorhandling\ClassNotFoundException as ClassNotFoundException;
 use errorhandling\NotControllerClassInstanceException as 
     NCCIE;
 use errorhandling\ControllerFileNotFoundException as ControllerFileNotFoundException;
@@ -46,6 +48,10 @@ class ControllerFactory {
         
         // névtér és osztály neve pl. controller\InduloController
         $controllerNameWithNamespace = __NAMESPACE__.self::NAMESPACE_SEPARATOR .$controllerName;
+
+        if(!class_exists($controllerNameWithNamespace)){
+            throw new ClassNotFoundException($controllerNameWithNamespace.' osztály nem létezik!');
+        }
 
         // a sztring alapján példányosítunk
         $controllerObj = new $controllerNameWithNamespace($this->helper);

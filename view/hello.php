@@ -6,6 +6,9 @@ include "page/header.php";
     <h1>Helló MVC</h1>
 
     <?=$dataObj->getProp('helloMsg');?>
+
+
+
 </main>
 
 <?php
