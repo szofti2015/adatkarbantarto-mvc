@@ -2,10 +2,23 @@
 
 namespace controller;
 
+require 'model\Bor.php';
+
+use model\Bor as Bor;
+
+
 class BorController extends Controller{
+
 
     // az absztract osztály miatt
     public function listAction(){
+
+        $borService = new BorService();
+
+        $borList = $borService->findAll();
+
+        $dataObj->addProp('borList', $borList);
+
         $this->viewResult = 'borlist';
     }
 
@@ -17,10 +30,9 @@ class BorController extends Controller{
     // interface miatt
     public function createTitle()
     {
-        $dataObj = DataObject::getInstance();
 
         // TODO: Nemzetközivé tétel i18n
-        $dataObj->addProp('title', "Borok listája");
+        $this->dataObj->addProp('title', "Borok listája");
     }
 
 }

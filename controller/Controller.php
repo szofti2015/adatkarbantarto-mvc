@@ -20,6 +20,8 @@ abstract class Controller implements ITitleCreator{
     protected $helper;
     protected $viewResult;
 
+    protected $dataObj = DataObject::getInstance();
+
     public function __construct(RequestHelper $helper) {
         $this->helper = $helper;
     }
