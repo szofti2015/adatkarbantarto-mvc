@@ -95,6 +95,10 @@ class RequestHelper {
     public function getViewDir(){
         return $this->configurator->getViewDir();
     }
+
+    public function getDbConfig(){
+        return $this->configurator->getDbConfig();
+    }
 }
 
 

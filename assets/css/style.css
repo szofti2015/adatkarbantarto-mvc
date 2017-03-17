@@ -14,3 +14,12 @@ ul {
     padding-left: 5px;
 }
 
+table {
+    margin: 10px auto;
+    border-collapse: collapse;
+}
+
+th, td {
+    border: 1px solid black;
+}
+

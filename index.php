@@ -17,18 +17,14 @@ use controller\DataObject as DataObject;
 use utils\Utils as Utils;
 
 try {
-    $helper = new RequestHelper(new AppConfigurator());
+    $helper = new RequestHelper(new AppConfigurator('config.json'));
 
     // gyártó tervezési minta
     $factory = new ControllerFactory($helper);
     
     $controller = $factory->produceController();
 
-    //var_dump($controller);
-
-
     $controller->handleRequest();   // model ->
-
 
     $controller->resolveView();     // view
 

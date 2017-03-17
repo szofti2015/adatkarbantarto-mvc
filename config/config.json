@@ -1,4 +1,10 @@
 {
     "defaultControllerName" : "valami",
-    "defaultActionName" : "akcio"
+    "defaultActionName" : "akcio",
+
+
+    "server" : "localhost",
+    "dbname" : "boraszat_db",
+    "dbuser" : "boraszat_user",
+    "dbpass" : "Boraszat_123"
 }

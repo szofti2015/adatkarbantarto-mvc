@@ -16,6 +16,8 @@ class AppConfigurator{
     private $defaultControllerName;
     private $defaultActionName;
 
+    private $dbConfig;
+
     public function __construct(){
 
         switch(func_num_args()){
@@ -85,6 +87,17 @@ class AppConfigurator{
 
         $this->configFromParams($jsonObj->defaultControllerName,
                                 $jsonObj->defaultActionName);
+
+
+        // standard objektum
+        // TODO: hibák lekezelése
+        $this->dbConfig = new \stdClass();
+
+        $this->dbConfig->server = $jsonObj->server;
+        $this->dbConfig->dbname = $jsonObj->dbname;
+        $this->dbConfig->dbuser = $jsonObj->dbuser;
+        $this->dbConfig->dbpass = $jsonObj->dbpass;
+
     }
 
     /**
@@ -101,6 +114,10 @@ class AppConfigurator{
 
     public function getViewDir(){
         return GlobalConfig::VIEW_DIR;
+    }
+
+    public function getDbConfig(){
+        return $this->dbConfig;
     }
 
 }

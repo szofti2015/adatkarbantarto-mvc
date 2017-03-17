@@ -6,58 +6,59 @@ class Bor {
 
     private $borId;
 
-    public function getId(){
+    public function getBorId(){
         return $this->borId;
     }
 
-    public function setId($borId){
+    public function setBorId($borId){
         $this->borId = $borId;
     }
 
     private $borNev;
 
-    public function getNev(){
-        return $this->borBor;
+    public function getBorNev(){
+        return $this->borNev;
     }
 
-    public function setNev($borNev){
+    public function setBorNev($borNev){
         $this->borNev = $borNev;
-    }
-
-    private $borPalackozva;
-
-    public function getPalackozva(){
-        return $this->borPalackozva;
-    }
-
-    public function setPalackozva($borPalackozva){
-        $this->borPalackozva = $borPalackozva;
     }
 
     private $borTipus;
 
-    public function getTipus(){
+    public function getBorTipus(){
         return $this->borTipus;
     }
 
-    public function setTipus($borTipus){
+    public function setBorTipus($borTipus){
         $this->borTipus = $borTipus;
     }
 
+    private $borPalackozva;
+
+    public function getBorPalackozva(){
+        return $this->borPalackozva;
+    }
+
+    public function setBorPalackozva($borPalackozva){
+        $this->borPalackozva = $borPalackozva;
+    }
+
+
     public function __construct($borId = null, $borNev = null,
-                               $borPalackozva = null, $borTipus = null){
+                               $borTipus = null, $borPalackozva = null){
         $this->borId = $borId;
         $this->borNev = $borNev;
-        $this->borPalackozva = $borPalackozva;
         $this->borTipus = $borTipus;
+        $this->borPalackozva = $borPalackozva;
 
     }
 
     public function __toString(){
         return $this->borId. ' : '.
                 $this->borNev. ' : '.
-                $this->borPalackozva . ' : '.
-                $this->borTipus;
+                $this->borTipus. ' : ';
+                $this->borPalackozva;
     }
 
 
